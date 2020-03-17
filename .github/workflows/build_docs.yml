@@ -64,7 +64,7 @@ jobs:
       run: |
         cd live
         git config --global user.email "konstantin.klein@hochfrequenz.de"
-        git config --global user.name "Automatic DocDX Build"
+        git config --global user.name "Automatic DocFX Build"
         git add .
         git commit -m "Automated update"
         header=$(echo -n "ad-m:${{ secrets.DOC_MGMT_TOKEN }}" | base64)
