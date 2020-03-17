@@ -1,7 +1,7 @@
 name: Build Documentation
 
 on:
- repository_dispatch:  # This is used to trigger the flow from HFInnovation/BO4E-dotnet via HTTP POST
+ repository_dispatch:  # This is used to trigger the flow from Hochfrequenz/BO4E-dotnet via HTTP POST
  push:
     branches:
       - master  # We don't want branches in doc to trigger builds
@@ -21,7 +21,7 @@ jobs:
     - name: Checkout live docs repo
       uses: actions/checkout@v1
       with:
-        repository: HFInnovation/bo4e-livedocs
+        repository: Hochfrequenz/bo4e-livedocs
         ref: master
         fetch-depth: 1
         path: docs/live
@@ -30,7 +30,7 @@ jobs:
     - name: Checkout BO4E-dotnet
       uses: actions/checkout@v1
       with:
-        repository: HFInnovation/BO4E-dotnet
+        repository: Hochfrequenz/BO4E-dotnet
         ref: master
         fetch-depth: 1
         path: docs/BO4E-dotnet
