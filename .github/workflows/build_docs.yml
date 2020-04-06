@@ -8,9 +8,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-18.04
-
     steps:
     # Checkout all repos
     - name: Checkout repo
@@ -69,3 +67,19 @@ jobs:
         git commit -m "Automated update"
         header=$(echo -n "ad-m:${{ secrets.DOC_MGMT_TOKEN }}" | base64)
         git -c http.extraheader="AUTHORIZATION: basic $header" push origin HEAD:master
+
+    # PlantUML rendering
+    - name: Checkout BO4E-dotnet for PUML
+      uses: actions/checkout@v1
+      with:
+        repository: Hochfrequenz/BO4E-dotnet
+        ref: master
+        fetch-depth: 1
+        path: puml/BO4E-dotnet
+    - name: PlantUML rendering
+      id: plantuml
+      uses: grassedge/generate-plantuml-action@v1.1
+      with:
+        path: puml/BO4E-dotnet/puml-svg
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
