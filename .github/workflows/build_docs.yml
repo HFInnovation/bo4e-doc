@@ -54,10 +54,8 @@ jobs:
       run: |
         curl -L https://github.com/dotnet/docfx/releases/latest/download/docfx.zip -o docfx.zip
         unzip -d .docfx docfx.zip
-
-    # Build
     - name: Build docs
-      run:  nuget restore && mono .docfx/docfx.exe
+      run:  mono .docfx/docfx.exe
     - name: Commit and push
       run: |
         cd live
